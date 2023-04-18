@@ -1,0 +1,9 @@
+<h1>Ingredients for Chef <%= @chef.name %></h1>
+
+<div id="chef-<%= @chef.id%>-ing">
+  <ul>
+    <% @ingredients.each do |ing| %>
+      <li><%= ing.name %></li>
+    <% end %>
+  <ul>
+</div>
