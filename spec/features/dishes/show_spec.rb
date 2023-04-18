@@ -39,4 +39,26 @@ RSpec.describe 'the Dishes show page', type: :feature do
       expect(page).to have_content(@dish1.chef_name)
     end
   end
+
+  describe 'User Story 2' do
+    it 'displays a form to add an ingredient' do
+      expect(page).to have_content('Add an Ingredient')
+      expect(page).to have_field('Ingredient ID')
+      expect(page).to have_button('Submit')
+    end
+
+    it 'adds an ingredient and returns to the show page with the ingredient listed' do
+      within('#dish-ing') do
+        expect(page).to_not have_content('spaghetti')
+      end
+
+      fill_in('Ingredient ID', with: @ing5.id)
+      click_button('Submit')
+
+      expect(current_path).to eq(dish_path(@dish1))
+      within('#dish-ing') do
+        expect(page).to have_content('spaghetti')
+      end
+    end
+  end
 end
