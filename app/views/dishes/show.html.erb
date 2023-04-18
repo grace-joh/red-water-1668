@@ -15,7 +15,7 @@
 
 
 <h3>Add an Ingredient</h3>
-<%= form_with url: dish_ingredients_path, method: :post, local: true do |f| %>
+<%= form_with url: dish_ingredients_path(@dish), method: :post, local: true do |f| %>
   <%= f.hidden_field :dish_id, value: @dish.id %>
   <%= f.label :ingredient_id, "Ingredient ID" %>
   <%= f.text_field :ingredient_id %>
